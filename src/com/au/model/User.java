@@ -18,13 +18,13 @@ import org.hibernate.annotations.Cascade;
 @Entity
 @Table(name="user")
 public class User {
-
+	
 	private static final long serialVersionUID = -2054386655979281969L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="UserId")
-	private int userId;
+	private static int userId;
 
 	@Column(name="UserName")
 	private String userName;
@@ -33,19 +33,26 @@ public class User {
 	private String userPass;
 
 	@Column(name="UsermailId")
-	private String UsermailId;
+	private String usermailId;
 
 	@Column(name="UserContact")
 	private String userContact;
 
 	@Column(name="EstBudget")
 	private double estBudget;
+	
+
+	@Column(name="City")
+	private String city;
 
 	@Column(name="NoOfGuest")
-	private double noOfGuest;
+	private int noOfGuest;
 
 	@Column(name="WeddingDate")
 	private Date weddingDate;
+
+	@Column(name="weddingDays")
+	private double weddingDays;
 
 	public int getUserId() {
 		return userId;
@@ -63,6 +70,33 @@ public class User {
 		this.userName = userName;
 	}
 
+	public User( String userName, String userPass, String usermailId, String userContact, double estBudget, String city,
+			int noOfGuest, Date weddingDate, double weddingDays) {
+		super();
+		
+		this.userName = userName;
+		this.userPass = userPass;
+		this.usermailId = usermailId;
+		this.userContact = userContact;
+		this.estBudget = estBudget;
+		this.city = city;
+		this.noOfGuest = noOfGuest;
+		this.weddingDate = weddingDate;
+		this.weddingDays = weddingDays;
+	}
+
+	public User() {
+		
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
 	public String getUserPass() {
 		return userPass;
 	}
@@ -72,11 +106,11 @@ public class User {
 	}
 
 	public String getUsermailId() {
-		return UsermailId;
+		return usermailId;
 	}
 
 	public void setUsermailId(String usermailId) {
-		UsermailId = usermailId;
+		usermailId = usermailId;
 	}
 
 	public String getUserContact() {
@@ -95,11 +129,11 @@ public class User {
 		this.estBudget = estBudget;
 	}
 
-	public double getNoOfGuest() {
+	public int getNoOfGuest() {
 		return noOfGuest;
 	}
 
-	public void setNoOfGuest(double noOfGuest) {
+	public void setNoOfGuest(int noOfGuest) {
 		this.noOfGuest = noOfGuest;
 	}
 
@@ -109,6 +143,15 @@ public class User {
 
 	public void setWeddingDate(Date weddingDate) {
 		this.weddingDate = weddingDate;
+	}
+	
+
+	public double getWeddingDays() {
+		return weddingDays;
+	}
+
+	public void setWeddingDays(double weddingDays) {
+		this.weddingDays = weddingDays;
 	}
 	
 //	@OneToOne(fetch = FetchType.EAGER ,mappedBy="user")
