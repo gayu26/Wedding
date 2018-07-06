@@ -6,9 +6,10 @@ import com.au.model.User;
 public interface UserDao {
 	User findById(int id);
 
-	void saveUser(User User);
+	void saveUser(User user);
+	void updateUser(User user);
 	
-	void deleteUserByUsername(String UserName);
+	void deleteUser(int UserId);
 	
 	List<User> findAllUsers();
 
